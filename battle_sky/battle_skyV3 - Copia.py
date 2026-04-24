@@ -44,7 +44,7 @@ class Menu(arcade.View):
 
         # TABELLA
         self.tabella_list = arcade.SpriteList()
-        self.tabella = arcade.Sprite("tabella.png")
+        self.tabella = arcade.Sprite("battle_sky/tabella.png")
         self.tabella.center_x = 80
         self.tabella.center_y = 500
         self.tabella.scale = 0.30
@@ -52,17 +52,17 @@ class Menu(arcade.View):
 
         # LOGHI
         self.logo_list = arcade.SpriteList()
-        self.logo = arcade.Sprite("aereo_1.png")
+        self.logo = arcade.Sprite("battle_sky/aereo_1.png")
         self.logo.center_x = WIDTH - 500
         self.logo.center_y = HEIGHT//2 - 100
         self.logo.scale = 0.30
 
-        self.logo2 = arcade.Sprite("aereo_2.png")
+        self.logo2 = arcade.Sprite("battle_sky/aereo_2.png")
         self.logo2.center_x = WIDTH - 300
         self.logo2.center_y = HEIGHT//2 - 100
         self.logo2.scale = 0.30
 
-        self.logo3 = arcade.Sprite("aereo_3.png")
+        self.logo3 = arcade.Sprite("battle_sky/aereo_3.png")
         self.logo3.center_x = WIDTH - 400
         self.logo3.center_y = HEIGHT//2 - 200
         self.logo3.scale = 0.30
@@ -73,7 +73,7 @@ class Menu(arcade.View):
 
         # SFONDO
         self.schermata_menu_list = arcade.SpriteList()
-        self.schermata_menu = arcade.Sprite("menu.jpg")
+        self.schermata_menu = arcade.Sprite("battle_sky/menu.jpg")
         self.schermata_menu.center_x = WIDTH//2
         self.schermata_menu.center_y = HEIGHT//2
         self.schermata_menu.width = WIDTH
@@ -112,7 +112,7 @@ class Menu(arcade.View):
         )
 
     def setup(self):
-        self.suono_menu = arcade.load_sound("sound_menu.mp3")
+        self.suono_menu = arcade.load_sound("battle_sky/sound_menu.mp3")
         self.suono_menu1 = self.suono_menu.play(loop=True)
 
     def on_draw(self):
@@ -202,9 +202,9 @@ class game(arcade.View):
         self.buff_durata = 0
 
         # SUONI PRECARICATI (FLUIDITÀ)
-        self.sound_explosion = arcade.load_sound('sound_explosion.mp3')
-        self.sound_bullet = arcade.load_sound('sound_bullet.mp3')
-        self.sound_game = arcade.load_sound('sound_game.mp3').play(loop=True)
+        self.sound_explosion = arcade.load_sound('battle_sky/sound_explosion.mp3')
+        self.sound_bullet = arcade.load_sound('battle_sky/sound_bullet.mp3')
+        self.sound_game = arcade.load_sound('battle_sky/sound_game.mp3').play(loop=True)
 
         # INVULNERABILITÀ
         self.invulnerabilita = False
@@ -213,7 +213,7 @@ class game(arcade.View):
 
         # SFONDO
         self.background_list = arcade.SpriteList()
-        background = arcade.Sprite("background1.jpg")
+        background = arcade.Sprite("battle_sky/background1.jpg")
         background.center_x = WIDTH//2
         background.center_y = HEIGHT//2
         background.width = WIDTH
@@ -221,17 +221,17 @@ class game(arcade.View):
         self.background_list.append(background)
 
         # VITE
-        Hp0 = arcade.Sprite('Hp.png')
+        Hp0 = arcade.Sprite('battle_sky/Hp.png')
         Hp0.center_x = WIDTH//2
         Hp0.center_y = HEIGHT - 20
         Hp0.scale = 0.005
 
-        Hp1 = arcade.Sprite('Hp.png')
+        Hp1 = arcade.Sprite('battle_sky/Hp.png')
         Hp1.center_x = WIDTH//2 + 20
         Hp1.center_y = HEIGHT - 20
         Hp1.scale = 0.005
 
-        Hp2 = arcade.Sprite('Hp.png')
+        Hp2 = arcade.Sprite('battle_sky/Hp.png')
         Hp2.center_x = WIDTH//2 - 20
         Hp2.center_y = HEIGHT - 20
         Hp2.scale = 0.005
@@ -268,10 +268,10 @@ class game(arcade.View):
     def spawn_buff(self):
         tipo = random.choice(['speed', 'double_shot', 'laser_blast', 'god'])
         buff_tipes = {
-            "speed": ("buff_speed.png", 0.004),
-            "god": ("buff_god_background.png", 0.003),
-            "double_shot": ("double_bullet.png", 0.002),
-            "laser_blast": ("change_bullet.png", 0.002)
+            "speed": ("battle_sky/buff_speed.png", 0.004),
+            "god": ("battle_sky/buff_god_background.png", 0.003),
+            "double_shot": ("battle_sky/double_bullet.png", 0.002),
+            "laser_blast": ("battle_sky/change_bullet.png", 0.002)
         }
 
         texture, prob = buff_tipes[tipo]
@@ -308,7 +308,7 @@ class game(arcade.View):
 
             if self.buff_active == 'double_shot':
                 for offset in (-10, 10):
-                    b = bullet('Bullet.png')
+                    b = bullet('battle_sky/Bullet.png')
                     b.scale = 0.010
                     b.center_x = self.logo_sprite.center_x + offset
                     b.bottom = self.logo_sprite.top
@@ -316,7 +316,7 @@ class game(arcade.View):
                     self.bullet_list.append(b)
 
             elif self.buff_active in ('laser_blast', 'god'):
-                laser = bullet('laser.png')
+                laser = bullet('battle_sky/laser.png')
                 laser.scale = 0.030
                 laser.center_x = self.logo_sprite.center_x
                 laser.bottom = self.logo_sprite.top
@@ -324,7 +324,7 @@ class game(arcade.View):
                 self.bullet_list.append(laser)
 
             else:
-                b = bullet('Bullet.png')
+                b = bullet('battle_sky/Bullet.png')
                 b.scale = 0.010
                 b.center_x = self.logo_sprite.center_x
                 b.bottom = self.logo_sprite.top
@@ -360,13 +360,13 @@ class game(arcade.View):
 
         # SPAWN NEMICI
         if random.random() < 0.0010:
-            self.spawn_enemy("aereo_4.png", 1, 600)
+            self.spawn_enemy("battle_sky/aereo_4.png", 1, 600)
         if random.random() < 0.0015:
-            self.spawn_enemy("aereo_5.png", 3, 400)
+            self.spawn_enemy("battle_sky/aereo_5.png", 3, 400)
         if random.random() < 0.0030:
-            self.spawn_enemy("aereo_6.png", 2, 200)
+            self.spawn_enemy("battle_sky/aereo_6.png", 2, 200)
         if random.random() < 0.0043:
-            self.spawn_enemy("aereo_7.png", 1, 100)
+            self.spawn_enemy("battle_sky/aereo_7.png", 1, 100)
 
         # INVULNERABILITÀ
         if self.invulnerabilita and not self.invulnerabilita_god:
@@ -393,7 +393,7 @@ class game(arcade.View):
                     enemy.remove_from_sprite_lists()
 
                     self.sound_explosion.play()
-                    boom = arcade.Sprite('explosion.png')
+                    boom = arcade.Sprite('battle_sky/explosion.png')
                     boom.center_x = enemy.center_x
                     boom.center_y = enemy.center_y
                     boom.scale = 0.05
@@ -482,7 +482,7 @@ class GameOver(arcade.View):
         super().__init__()
 
         self.game_over_list = arcade.SpriteList()
-        self.game_over = arcade.Sprite('gameover.jpg')
+        self.game_over = arcade.Sprite('battle_sky/gameover.jpg')
         self.game_over.center_x = WIDTH//2
         self.game_over.center_y = HEIGHT//2
         self.game_over.width = WIDTH
@@ -528,8 +528,8 @@ class GameOver(arcade.View):
         self.button_home.on_click = self.on_click_home
         self.ui.add(self.button_home)
 
-        self.sound_voice = arcade.load_sound("sound_voice.mp3").play()
-        self.sound_gameover = arcade.load_sound("sound_gameover.mp3").play(loop=True)
+        self.sound_voice = arcade.load_sound("battle_sky/sound_voice.mp3").play()
+        self.sound_gameover = arcade.load_sound("battle_sky/sound_gameover.mp3").play(loop=True)
 
     def on_click_home(self, event):
         self.sound_voice.delete()
