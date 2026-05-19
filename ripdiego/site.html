@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang = 'it'>
+   
+<head>
+        <title>r######o</title>
+        <meta charset = 'utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "stylesheet" href = "css.css">
+
+    </head>
+
+    <body>
+
+    <h1 id="countdown"></h1>
+    
+    <script>
+    
+    // countdown javascript
+
+        let masked = "?£%&/()=^*+@#-_.:,;<>|RIPDIEGO"
+
+        function randochar() {
+            if (Math.random() < 0.7) {
+                return masked[Math.floor(Math.random() * masked.length)]
+            } else {
+                return Math.floor(Math.random() * 10)
+            }
+        }
+
+        function generate() {
+            let str = ""
+            for (let i=0;  i <= 30; i++) {
+                str += randochar()
+            }
+            return str;
+        }
+        
+        setInterval(() => {
+                document.getElementById('countdown').innerHTML = generate()         
+            },1000)
+        
+    </script>
+
+    <!--scrollbar and mouse-->
+    
+
+</body>
+</html>
