@@ -1,159 +1,81 @@
 <!DOCTYPE html>
-<html lang = 'it'>
+<html lang="it">
 
 <head>
 
-<title>r######o</title>
-<meta charset = 'utf-8'>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>
-    <style>
-        
-        body{
-        background-color: rgb(0, 0, 0);
-        height: 100vh;
-
-        }
-
-        .button {
-
-            font-size: xx-large;
-            filter: brightness(8);
-            
-        }
-
-        .container {
-
-            top: 50%;
-            left: 50%;
-            position : fixed;
-            display : flex;
-            flex-direction: column;
-            justify-content: center;
-            gap : 20px ;
-            align-items : center;
-            background : transparent ;
-            transform: translate(-50%, -50%) ;
-            position: absolute;
-            z-index: 9999;
-
-        }
-
-        .loading {  /* . per le classi */
-
-            width: 84px;
-            height: 84px;
-            display: none;
-            
-        }
-
-        #gallery {
-
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-
-        }
-
-        #gallery img {
-
-            position: absolute;
-            width : 200px;
-            pointer-events: none;
-        }
-
-    </style>
-
-
-    <div>
-
-        <div class = "container"> // contenitore per link e 'immagine
-
-        <a id="underground" class = "button" href = "site.html"> underground </a> 
-        <img id = "loader" src = "load.gif" class = "loading">
-
-        </div>;
-
-        <div id = "gallery"></div>
-    
-    </div>
+    <title>r######o</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
     <script>
-
-                
-        const creepy_img = [
-
-            "img/smile.gif",
-            "img/blank-room-soup-soup.gif",
-            "img/joachim-kroll.jpg",
-            "img/loseurbearing.gif",
-            "img/ojos.gif",
-            "img/omayra-sanchez.jpg",
-            "img/robert-landsburg-mount-saint-helens.jpg",
-            "img/robert-overacker.jpg",
-            "img/stanford-prison-experiment-prisoner.jpg",
-            "img/tara-calico.jpg",
-            "img/weird-funny.gif",
-            "img/xreamy-boisvert.gif",
-            "img/foto-inquietanti-spaventose-02.jpg",
-            "img/foto-inquietanti-spaventose-08.jpg",
-            "img/foto-inquietanti-spaventose-25.jpg",
-            "img/foto-inquietanti-spaventose-45.jpg",
-            "img/foto-inquietanti-spaventose-49.jpg",
-            "img/foto-inquietanti-spaventose-49.jpg",
-            "img/foto-inquietanti-spaventose-49.jpg",
-        ]
-        
-        function random_img (list){
-
-            const a = document.getElementById("gallery")
-
-            let i = 0
-
-                setInterval (() => {
-
-                if (i>list.length) return;
-
-                const img = document.createElement("img");
-
-                img.src = creepy_img[i];
-
-                img.style.position = "absolute";
-                img.style.top = Math.random() * 80 + "vh";
-                img.style.left = Math.random () * 80 + "vw";
-
-                a.appendChild(img);
-
-                i++;
-
-            },350);
+        // attesta ten seconds
+        function delayRedirect() {
+            setTimeout(() => {
+                window.location.href = 'site.html'
+            }, 10000)
         }
-
-
-        const image = document.getElementById("loader");
-
-        const link = document.getElementById("underground");
-        
-        link.addEventListener("click",(event)=>{  // acolta l'evento
-        
-            random_img(creepy_img)
-            image.style.display = "block" // mostra l'immagine
-
-            event.preventDefault();   // blocca un comportamento immediato
-            
-            setTimeout(() => { // aspetta un tempo e poi esegue qualcosa
-                
-                window.location.href = link.href;
-                
-            },5000);
-            
-            
-        })
-               
+        function buttondelete(){
+            document.querySelector(".deletebtn").remove();
+            document.querySelector("audio").play(); 
+        }
     </script>
 
+</head>
+<body>
 
+<style>
+    body{
+        margin: 0;
+        height: 100vh;
+    }
+
+    .button{
+        font-size: small;
+        filter: drop-shadow();
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .video{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain; /* mostra video */
+    transform: translate(-50%, -50%);
+    background: black; /* evita bordi bianchi */
+    z-index: -1;
+    }
+
+</style>
+
+    <button class = "button" onclick="delayRedirect()">underground</button>
+
+<video autoplay loop muted class="video">
+    <source src="https://www.dropbox.com/scl/fi/w4yyznovro3t9x23awrft/videoplayback.mp4?rlkey=q99tbj9hzfiju6rp706xsr126&st=d3el7157&raw=1" type="video/mp4">
+</video>
+
+<button class = "deletebtn" style="  font-size: small;
+        filter: drop-shadow();
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);" onclick="buttondelete()">#R2..0I2..6P#</button>
+
+<audio>
+    <source src="img/audio_intro.mpeg" type="audio/mpeg">
+</audio>
+
+<p style="
+text-align : center;
+padding-top : 20px;
+left : 50%;
+color :white;
+filter: drop-shadow(0 0 5px rgb(0, 0, 0));">
+reality comes out of the imagination</p>
+
+</body>
 </html>
