@@ -18,6 +18,7 @@
             document.querySelector(".deletebtn").remove();
             document.querySelector("audio").play(); 
         }
+
     </script>
 
 </head>
@@ -31,7 +32,6 @@
 
     .button{
         font-size: small;
-        filter: drop-shadow();
         position: absolute;
         top: 50%;
         left: 50%;
@@ -44,7 +44,7 @@
     left: 50%;
     width: 100vw;
     height: 100vh;
-    object-fit: contain; /* mostra video */
+    object-fit: cover; /* mostra video */
     transform: translate(-50%, -50%);
     background: black; /* evita bordi bianchi */
     z-index: -1;
@@ -54,7 +54,7 @@
 
     <button class = "button" onclick="delayRedirect()">underground</button>
 
-<video autoplay loop muted class="video">
+<video autoplay loop muted playsinline class="video">
     <source src="https://www.dropbox.com/scl/fi/w4yyznovro3t9x23awrft/videoplayback.mp4?rlkey=q99tbj9hzfiju6rp706xsr126&st=d3el7157&raw=1" type="video/mp4">
 </video>
 
@@ -73,8 +73,7 @@
 text-align : center;
 padding-top : 20px;
 left : 50%;
-color :white;
-filter: drop-shadow(0 0 5px rgb(0, 0, 0));">
+color :white;">
 reality comes out of the imagination</p>
 
 </body>
